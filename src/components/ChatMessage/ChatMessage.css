@@ -1,0 +1,152 @@
+/* ChatMessage.css */
+
+.chat-messages-list {
+  list-style-type: none;
+  padding: 1px;
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-message, .bot-message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;  
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  justify-content: flex-end;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot-message {
+  justify-content: flex-start;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.message-icon {
+  margin-right: 10px;
+}
+
+.user-message .message-icon {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.message-content {
+  background-color: #f4f4f4;
+  border-radius: 16px;
+  padding: 10px 15px;
+  color: #333;
+  max-width: 100%;
+}
+
+.user-message .message-content {
+  text-align: right;
+  background-color: #f4f4f4;
+  color: #0d0d0d;
+  border-top-right-radius: 0;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.bot-message .message-content {
+  text-align: left;
+  border-top-left-radius: 0;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.message-text {
+  text-align:left;
+  margin: 0;
+  color: #0d0d0d;
+}
+
+.file-message {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.user-message .file-message {
+  justify-content: flex-start;
+}
+
+.bot-message .file-message {
+  justify-content: flex-start;
+}
+
+.file-message a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #0d0d0d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .file-message a {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .file-message a {
+    max-width: 80px;
+  }
+}
+
+.role-title {
+  text-align:left;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.file-preview {
+  margin-top: 10px;
+  width: 300px;
+  max-width: 100%;
+}
+
+.linkstlyle{
+  color:lightskyblue;
+  text-decoration: none;
+}
+
+.verticalScroll{
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.preview-container {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  /* padding: 10px; */
+  max-width: 300px;
+  max-height: 200px;
+  overflow: hidden; /* Hide any content that overflows */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin-bottom: 1px; /* Space between the preview and the message */
+}
+
+.preview-container img,
+.preview-container video,
+.preview-container audio,
+.preview-container iframe {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the content fits within the container */
+}

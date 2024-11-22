@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  /* color: #ececf1; */
+  color: #7d7d7d;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+  /* background-color: #343541; */
+  background-color: #ffffff;
+}
+
+.burger {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-25%, -50%);
+  /* fill: #ececf1; */
+  fill: black;
+  cursor: pointer;
+  color: #202123;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.burger:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sidebar {
+  width: 16rem;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #f0f4f9; like gemini  below is like vhat gpt.mad looked like chat gpt*/
+  background-color: #f9f9f9;
+
+  overflow: auto;
+  transition: all 0.3s ease;
+}
+
+.sidebar.open {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  box-shadow: 0px 0px 14px #ececf1;
+  filter: blur(14px);
+}
+
+.sidebar-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.3rem;
+  border: 0.05rem solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  /* margin-top: 51px; */
+}
+
+.sidebar-header:hover {
+  /* background-color: #2b2c2f; */
+  background-color: #ececec;
+}
+
+.sidebar-history {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.sidebar-history p {
+  position: sticky;
+  top: 0;
+  background-color: rgb(32, 33, 35);
+  padding: 0.4rem;
+  color: #8e8fa1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.sidebar li {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+.sidebar .li-overflow-shadow:not(:hover)::after {
+  content: "‎";
+  position: absolute;
+  bottom: 0.5rem;
+  right: -5px;
+  padding: 0 5px;
+  left: calc(100% - 50px);
+  border-radius: 0.3rem;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    #202123 100%,
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sidebar-info {
+  width: 100%;
+  padding-top: 1rem;
+  border-top: 0.05rem solid rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-info-upgrade,
+.sidebar-info-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.sidebar li:hover,
+.sidebar-info-upgrade:hover,
+.sidebar-info-user:hover {
+  background-color: #343541;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.sidebar-info-upgrade:hover,
+.sidebar-info-user:hover {
+  cursor: not-allowed;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  /* align-items: center; */
+  /* align-items: center; */
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.main h1 {
+  font-size: 2rem;
+}
+
+.main-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  overflow: auto;
+}
+
+.main-header li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgb(68, 70, 85);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.3rem;
+}
+
+.main-header li:nth-child(odd) {
+  background-color: unset;
+}
+
+.main-header li:nth-child(even) {
+  background-color: #444655;
+}
+
+.main-header img:not(:nth-child(even)) {
+  display: block;
+  border-radius: 0.3rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.role-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.main-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.main-bottom p:first-child {
+  padding-top: 0.5rem;
+}
+
+.main-bottom p {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #c3c3d1;
+}
+
+.empty-chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.empty-chat-container h3 {
+  font-weight: 500;
+}
+
+.errorText {
+  margin: 0 auto;
+}
+
+#errorTextHint {
+  margin: 0 auto;
+  opacity: 0.6;
+}
+
+.form-container {
+  width: 50rem;
+  padding: 0.3rem 1.6rem;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  /* background-color: #404150; */
+  background-color: #f4f4f4;
+  box-shadow: rgb(0, 0, 0, 0.05) 0 3.3rem 3.4rem,
+    rgb(0, 0, 0, 0.05) 0 -0.7rem 1.8rem, rgb(0, 0, 0, 0.05) 0 0.2rem 0.3rem,
+    rgb(0, 0, 0, 0.05) 0 0.7rem 0.2rem, rgb(0, 0, 0, 0.05) 0 0.2rem 0.3rem;
+}
+
+.form-container input {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
+  padding-right: 1rem;
+  /* /8 background-color: #404150;8/ */
+  background-color: #f4f4f4;
+  outline: none;
+  border: none;
+}
+
+.form-container input::placeholder {
+  color: #8e8fa1;
+}
+
+.form-container svg {
+  fill: #8e8fa1;
+  transform: rotate(-45deg);
+}
+
+.form-container svg:hover {
+  fill: #ececf1;
+}
+
+@media screen and (min-width: 1280px) {
+  .main-header li {
+    margin: 1rem auto;
+    width: 50rem;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .form-container {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main-header li {
+    gap: 1rem;
+  }
+}
+
+.logo-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.user-message-style {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: end;
+}
+
+.bot-message-style {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: start;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 50.5%; /* Position above the icon */
+  left: 2.5%;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-container {
+  /* position: relative; */
+  display: inline-block;
+}
+.sidebar-toggle-container {
+  position: relative;
+  display: inline-block;
+}
+
+.welcomemsg {
+  margin-top: "20px";
+  font-size: "34px"; /* Adjust font size as needed */
+  font-weight: bold; /* Optional: Makes the text bold */
+  background: linear-gradient(
+    to right,
+    #d3d3d3,
+    #000000
+  ); /* Grey to black gradient */
+  background-clip:text;
+  -webkit-background-clip: text; /* Ensures the gradient is applied to the text */
+  -webkit-text-fill-color: transparent; /* Makes the text color transparent so the gradient shows through */
+  display: inline; /* Ensures the text is not affected by other display properties */
+}
